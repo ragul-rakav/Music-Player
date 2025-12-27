@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minimal Music Card</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <article class="card">
+
+      <div class="cover-box">
+        <img src="https://picsum.photos/seed/album/600" alt="Album cover" class="cover">
+      </div>
+
+      <div class="meta">
+        <h1 class="title">Quiet Morning</h1>
+        <p class="artist">Lumen · Instrumental</p>
+      </div>
+
+      <div class="seek">
+        <input type="range" min="0" max="100" value="35" id="seek">
+      </div>
+
+      <div class="controls">
+        <button class="btn">⏮</button>
+        <button class="btn play" id="playBtn">▶</button>
+        <button class="btn">⏭</button>
+      </div>
+
+      <div class="volume">
+        <button class="mute" id="muteBtn">🔊</button>
+        <input type="range" min="0" max="100" value="70" id="volume">
+      </div>
+
+    </article>
+  </main>
+
+  <script>
+    const seek = document.getElementById("seek");
+    const playBtn = document.getElementById("playBtn");
+    const volume = document.getElementById("volume");
+    const muteBtn = document.getElementById("muteBtn");
+
+    function updateSeek() {
+      const val = seek.value;
+      seek.style.background =
+        `linear-gradient(to right, #111 ${val}%, #e5e5e5 ${val}%)`;
+    }
+
+    seek.oninput = updateSeek;
+    updateSeek();
+
+    playBtn.onclick = () => {
+      playBtn.textContent = playBtn.textContent === "▶" ? "⏸" : "▶";
+    };
+
+    function updateVolumeIcon() {
+      const v = volume.value;
+      if (v == 0) muteBtn.textContent = "🔇";
+      else if (v < 40) muteBtn.textContent = "🔈";
+      else muteBtn.textContent = "🔊";
+    }
+
+    muteBtn.onclick = () => {
+      volume.value = volume.value == 0 ? 50 : 0;
+      volume.dispatchEvent(new Event("input"));
+    };
+
+    volume.oninput = updateVolumeIcon;
+    updateVolumeIcon();
+  </script>
+</body>
+</html>
