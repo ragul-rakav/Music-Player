@@ -27,8 +27,6 @@ body {
   border-radius: 16px;
   padding: 16px;
 }
-
-/* IMAGE BOX — SMALLER */
 .cover-box {
   padding: 6px;
   background: #f1f1f1;
@@ -62,7 +60,6 @@ body {
   color: #6b6b6b;
 }
 
-/* SEEK BAR — BOLDER BLACK, SLIM GRAY */
 .seek {
   margin: 18px 0 10px;
 }
@@ -92,7 +89,7 @@ body {
   border: none;
 }
 
-/* CONTROLS */
+
 .controls {
   display: flex;
   justify-content: center;
@@ -115,7 +112,7 @@ body {
   border-radius: 14px;
 }
 
-/* VOLUME — SUBTLE */
+
 .volume {
   display: flex;
   align-items: center;
@@ -141,3 +138,4 @@ body {
     transition: none;
   }
 }
+
